@@ -31,7 +31,7 @@ class Searchbar_UI{
     this.style_top = geosearchbar_top
     this.style_left = geosearchbar_left
     this.style_color_focus = geosearchbar_color_focus
-    this.style_background_color  = geosearchbar_background_color 
+    this.style_background_color  = geosearchbar_background_color
   }
 
   createStyle(){
@@ -49,7 +49,7 @@ class Searchbar_UI{
       -webkit-box-shadow: inset 0 0 10px #000000;
       box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    
+
     #search_bar {
       outline: none !important;
       height: 35px;
@@ -71,7 +71,7 @@ class Searchbar_UI{
 
   #search_bar:focus {
       outline: none !important;
-      border: 0px!important; 
+      border: 0px!important;
       border-radius: 8px !important;
       box-shadow: 0 0 3px ${this.style_color_focus} !important;
       -moz-box-shadow: 0 0 3px ${this.style_color_focus}!important;
@@ -89,11 +89,12 @@ class Searchbar_UI{
     let maininput = document.createElement("div")
     maininput.style.display = "flex"
 
+/*
     let input = document.createElement("input")
     input.placeholder = "Buscar..."
     input.id = "search_bar"
     input.autocomplete = "off"
-    
+  */  
     let icon = document.createElement("div")
     icon.id = "div-icon-close-searchbar"
     icon.style = "margin: 5px;text-align: center;"
@@ -108,9 +109,9 @@ class Searchbar_UI{
 
     divsearch.append(maininput)
     divsearch.append(res)
-    
+
     document.body.appendChild(divsearch)
-    
+
     let textinput = document.getElementById("search_bar")
     let results = document.getElementById("results_search_bar")
     const search_input = document.getElementById('search_bar');
@@ -126,7 +127,7 @@ class Searchbar_UI{
       mapa.removeGroup("markerSearchResult", true);
     });
 
-    
+
     search_input.addEventListener('input', (e) => {
       search_term = e.target.value;
         if(search_term.length ===0){
@@ -144,7 +145,7 @@ class Searchbar_UI{
           showGeocoderResults()
       }
     });
-    
+
   }
 }
 
@@ -187,7 +188,7 @@ class Card_Coord{
     for(let item in data_split){
       cardtext +=`<h6 class="card-text">${data_split[item]}</h6>`
     }
-    
+
     let html = `
     <li class="list-group-item-gc" style="height:auto">
     <div class="card-body">
@@ -212,7 +213,7 @@ const fetchGeocoder= async () => {
     new UserMessage(err.message, true, 'error')
   }
 
-  
+
 }
 
 const showGeocoderResults = async () => {
@@ -220,7 +221,7 @@ const showGeocoderResults = async () => {
 
 	results.innerHTML = '';
   mapa.removeGroup("markerSearchResult", true);
-	
+
   const ul = document.createElement("ul");
   ul.className = "list-group-gc"
   ul.style.margin = "5px"
@@ -242,7 +243,7 @@ const showGeocoderResults = async () => {
       geometry: { type: "Point", coordinates: [lng,lat]},
     }
     mapa.addGeoJsonLayerToDrawedLayers(geojsonMarker , "markerSearchResult", false)
-    
+
     let newcard = new Card_Coord
     newcard.createElement(response_items[0].row_to_json)
   }
@@ -252,12 +253,12 @@ const showGeocoderResults = async () => {
     li.className = "list-group-item-gc"
     li.style="cursor: pointer;color:grey;"
     ul.append(li)
-    container.innerHTML = "";  
+    container.innerHTML = "";
     container.append(ul)
   }
   else{
     for (let  i = 0; i<limit; i++){
-      container.innerHTML = ""; 
+      container.innerHTML = "";
       let item = response_items[i]
       let li = document.createElement("li")
       li.onclick = (e) => {
@@ -268,7 +269,7 @@ const showGeocoderResults = async () => {
       li.className = "list-group-item-gc"
       li.style="cursor: pointer;"
       ul.append(li)}
-      container.innerHTML = "";  
+      container.innerHTML = "";
       container.append(ul)
     }
 

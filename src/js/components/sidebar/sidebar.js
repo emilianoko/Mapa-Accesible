@@ -44,9 +44,9 @@ class SidebarTools {
     elem.id = "sidebar-toolbar-icon-left";
     elem.innerHTML = this.component;
 
-    const elemright = document.createElement("div");
-    elemright.id = "sidebar-toolbar-icon-right";
-    elemright.innerHTML = this.component;
+    //const elemright = document.createElement("div");
+    //elemright.id = "sidebar-toolbar-icon-right";
+    //elemright.innerHTML = this.component;
 
     document.getElementById("mapa").appendChild(elem);
     document.getElementById("mapa").appendChild(elemright);

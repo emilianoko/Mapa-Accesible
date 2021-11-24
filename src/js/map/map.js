@@ -149,7 +149,7 @@ $("body").on("pluginLoad", function(event, plugin){
 						metric: true,
 						imperial: false
 					}).addTo(mapa);
-					*/ 
+					*/
 					L.control.scale({
 						metric: true,
 						imperial: false
@@ -223,7 +223,7 @@ $("body").on("pluginLoad", function(event, plugin){
 					  forceSeparateButton: true, // force seperate button to detach from zoom buttons, default false
 					  forcePseudoFullscreen: false, // force use of pseudo full screen even if full screen API is available, default false
 					  fullscreenElement: false // Dom element to render in full screen, false by default, fallback to map._container
-					}).addTo(mapa);	
+					}).addTo(mapa);
 
 					/* mapa.on('enterFullscreen', function(){
 					  if (miniMap._minimized) {
@@ -247,7 +247,7 @@ $("body").on("pluginLoad", function(event, plugin){
 					  onAdd: function (map) {
 						var container = L.DomUtil.create('div', 'leaflet-control leaflet-control-customgraticule');
 						container.title = 'Cuadrícula';
-						
+
 						container.onclick = function() {
 							if (customGraticule == null) {
 								//drawGrid(mapa.getZoom());
@@ -359,7 +359,7 @@ $("body").on("pluginLoad", function(event, plugin){
 						position: 'topright'
 					});
 					//Customizing language and text in Leaflet.draw
-					L.drawLocal.draw.toolbar.finish.title = 'Finalizar dibujo';
+				/*	L.drawLocal.draw.toolbar.finish.title = 'Finalizar dibujo';
 					L.drawLocal.draw.toolbar.finish.text = 'Finalizar';
 					L.drawLocal.draw.toolbar.actions.title = 'Cancelar dibujo';
 					L.drawLocal.draw.toolbar.actions.text = 'Cancelar';
@@ -397,12 +397,12 @@ $("body").on("pluginLoad", function(event, plugin){
 					L.drawLocal.edit.handlers.edit.tooltip.text = 'Arrastrar polígonos o marcadores para editar sus características';
 					L.drawLocal.edit.handlers.edit.tooltip.subtext = 'Click en cancelar para deshacer los cambios';
 					L.drawLocal.edit.handlers.remove.tooltip.text = 'Click sobre la característica a eliminar';
-					mapa.addControl(drawControl);
+					mapa.addControl(drawControl);*/
 
 					mapa.on('draw:drawstart', (e) => {
 						currentlyDrawing = true;
 					});
-					
+
 					mapa.on('draw:editstart', (e) => {
 						currentlyDrawing = true;
 					});
@@ -435,7 +435,7 @@ $("body").on("pluginLoad", function(event, plugin){
 						mapa.editableLayers[type].push(layer);
 
 						drawnItems.addLayer(layer);
-						
+
 						if (layer.type === 'marker') {
 							//Default marker styles
 							layer.options.borderWidth = DEFAULT_MARKER_STYLES.borderWidth;
@@ -456,7 +456,7 @@ $("body").on("pluginLoad", function(event, plugin){
 							//mapa.checkLayersInDrawedGeometry(layer, type);
 						});
 					});
-					
+
 					mapa.on('draw:deleted', function (e) {
 						var layers = e.layers;
 						Object.values(layers._layers).forEach(deletedLayer => {
@@ -563,7 +563,7 @@ $("body").on("pluginLoad", function(event, plugin){
 								parent.className = 'leaflet-popup-content popup-parent';
 							}
 						});
-						
+
 						contextMenu.createOption({
 							isDisabled: false,
 							text: 'Acercar',
@@ -587,7 +587,7 @@ $("body").on("pluginLoad", function(event, plugin){
 								}
 							}
 						});
-						
+
 						contextMenu.createOption({
 							isDisabled: false,
 							text: 'Descargar geometría',
@@ -596,7 +596,7 @@ $("body").on("pluginLoad", function(event, plugin){
 								layer.downloadGeoJSON();
 							}
 						});
-						
+
 						contextMenu.createOption({
 							isDisabled: false,
 							text: 'Eliminar geometría',
@@ -899,7 +899,7 @@ $("body").on("pluginLoad", function(event, plugin){
 						//-Marker
 						const markerSection = document.createElement('div');
 						markerSection.className = 'section-popup';
-						
+
 						if (layer.type === 'marker') {
 
 							//Title
@@ -1055,7 +1055,7 @@ $("body").on("pluginLoad", function(event, plugin){
 							//Download
 							const downloadDiv = document.createElement('div');
 							downloadDiv.className = 'section-item';
-							
+
 							const downloadTitle = document.createElement('label');
 							downloadTitle.className = '';
 							downloadTitle.innerHTML = 'Descargar como';
@@ -1098,7 +1098,7 @@ $("body").on("pluginLoad", function(event, plugin){
 							downloadDiv.appendChild(downloadBtnsDiv);
 							markerSection.appendChild(downloadDiv);
 						}
-						
+
 
 						switch (layer.type) {
 							case 'marker': {
@@ -1186,15 +1186,15 @@ $("body").on("pluginLoad", function(event, plugin){
 						const activeLayersDiv = document.getElementById('activeLayers');
 						if (!activeLayersDiv)
 							return;
-					
+
 						const activeLayersDivChilds = Array.from(activeLayersDiv.childNodes);
 						const containerIdx = activeLayersDivChilds.findIndex(layerDiv => layerDiv.id.split('container_')[1] === layer);
 						if (containerIdx >= 0 && !addToList) {
 							activeLayersDiv.removeChild(activeLayersDivChilds[containerIdx]);
 						} else if (containerIdx === -1 && addToList) {
-							mapa.addLayerToPopUp(activeLayersDiv, layer);	
+							mapa.addLayerToPopUp(activeLayersDiv, layer);
 						}
-					
+
 						const showInfoBtn = document.getElementById('btn-show-info');
 						if (gestorMenu.getActiveLayersWithoutBasemap().length > 0) {
 							showInfoBtn.classList.remove("btn-disabled");
@@ -1315,7 +1315,7 @@ $("body").on("pluginLoad", function(event, plugin){
 							if (selectedLayer.checked)
 								selectedLayers.push(selectedLayer.id);
 						});
-						
+
 						layer.closePopup();
 
 						if (Object.keys(layer.data).length === 0) {
@@ -1404,12 +1404,12 @@ $("body").on("pluginLoad", function(event, plugin){
 							});
 						}
 					}
-					
+
 					mapa.getLayerGeoJSON = (layer) => {
 						const type = layer.split('_')[0];
 						return mapa.editableLayers.hasOwnProperty(type) ? mapa.editableLayers[type].find(lyr => lyr.name === layer).toGeoJSON() : null;
 					}
-					
+
 					mapa.showLayer = (layer) => {
 						const type = layer.split('_')[0];
 						if (mapa.editableLayers.hasOwnProperty(type)) {
@@ -1547,40 +1547,40 @@ $("body").on("pluginLoad", function(event, plugin){
 						borderGradient.setAttribute('x2', '0');
 						borderGradient.setAttribute('y1', '0');
 						borderGradient.setAttribute('y2', '1');
-				
+
 						const stop1 = document.createElementNS(svgNS, 'stop');
 						stop1.setAttribute('offset', '0');
 						stop1.setAttribute('stop-color', color1);
 						borderGradient.appendChild(stop1);
-						
+
 						const stop2 = document.createElementNS(svgNS, 'stop');
 						stop2.setAttribute('offset', '1');
 						stop2.setAttribute('stop-color', getDarkerColorTone(color1, -0.3));
 						borderGradient.appendChild(stop2);
-				
+
 						const fillGradient = document.createElementNS(svgNS, 'linearGradient');
 						fillGradient.setAttribute('id', 'fillGradient');
 						fillGradient.setAttribute('x1', '0');
 						fillGradient.setAttribute('x2', '0');
 						fillGradient.setAttribute('y1', '0');
 						fillGradient.setAttribute('y2', '1');
-				
+
 						const stop3 = document.createElementNS(svgNS, 'stop');
 						stop3.setAttribute('offset', '0');
 						stop3.setAttribute('stop-color', color2);
 						fillGradient.appendChild(stop3);
-						
+
 						const stop4 = document.createElementNS(svgNS, 'stop');
 						stop4.setAttribute('offset', '1');
 						stop4.setAttribute('stop-color', getDarkerColorTone(color2, -0.3));
 						fillGradient.appendChild(stop4);
-				
+
 						defs.appendChild(borderGradient);
 						defs.appendChild(fillGradient);
 
 						const g = document.createElementNS(svgNS, "g");
 						marker.appendChild(g);
-						
+
 						const path = document.createElementNS(svgNS, "path");
 						path.setAttribute('d', 'm27.3 3.1c-13.694 0-25.092 11.382-25.092 23.732 0 5.556 3.258 12.616 5.613 17.492l19.388 35.744 19.296-35.744c2.354-4.876 5.704-11.582 5.704-17.492 0-12.35-11.215-23.732-24.908-23.732zm0 14.31c5.383.034 9.748 4.244 9.748 9.42s-4.365 9.326-9.748 9.358c-5.383-.034-9.748-4.18-9.748-9.358 0-5.176 4.365-9.386 9.748-9.42z');
 						path.setAttribute('stroke', `url(#strokeGradient)`);
@@ -1777,7 +1777,7 @@ $("body").on("pluginLoad", function(event, plugin){
 						}
 
 						mapa.editableLayers[type].push(layer);
-						
+
 						if (layer.type === 'marker') {
 							//Default marker styles
 							layer.options.borderWidth = DEFAULT_MARKER_STYLES.borderWidth;
@@ -1827,7 +1827,7 @@ $("body").on("pluginLoad", function(event, plugin){
 				const interval = setInterval(() => {
 					if (L.tileLayer.bing) {
 						window.clearInterval(interval);
-						currentBaseMap = L.tileLayer.bing({ 
+						currentBaseMap = L.tileLayer.bing({
 							bingMapsKey: selectedBasemap.key,
 							culture: 'es_AR',
 							minZoom: selectedBasemap.hasOwnProperty('zoom') ? selectedBasemap.zoom.min : DEFAULT_MIN_ZOOM_LEVEL,
@@ -1873,27 +1873,27 @@ $("body").on("pluginLoad", function(event, plugin){
 			    return new L.Control.Watermark(opts);
 			}
 			L.control.watermark({ position: 'topleft' }).addTo(mapa);
-            
+
 			mapa.on('click', function(e) {
                 setTimeout(function(){
                     popupInfo = new Array();
                 }, 2000);
             });
-            
+
             showMainMenuTpl();
-            
+
 			break;
 		case 'MousePosition':
 			// Leaflet-MousePosition plugin https://github.com/ardhi/Leaflet.MousePosition
 			L.control.mousePosition({
-				position: 'bottomright', 
+				position: 'bottomright',
 				lngFormatter: function(num) {
 					var direction = (num < 0) ? 'O' : 'E';
-					return deg_to_dms(Math.abs(num)) + direction; 
+					return deg_to_dms(Math.abs(num)) + direction;
 				},
 				latFormatter: function(num) {
 					var direction = (num < 0) ? 'S' : 'N';
-					return deg_to_dms(Math.abs(num)) + direction; 
+					return deg_to_dms(Math.abs(num)) + direction;
 				},
 				separator: '  ',
 				emptyString: '&nbsp;'
@@ -1901,7 +1901,7 @@ $("body").on("pluginLoad", function(event, plugin){
 			gestorMenu.plugins['MousePosition'].setStatus('visible');
 			break;
 		case 'BingLayer':
-			if(gestorMenu.pluginExists('BingLayer') && gestorMenu.plugins['leaflet'].getStatus() == 'visible' && gestorMenu.plugins['BingLayer'].getStatus() == 'ready' ){	
+			if(gestorMenu.pluginExists('BingLayer') && gestorMenu.plugins['leaflet'].getStatus() == 'visible' && gestorMenu.plugins['BingLayer'].getStatus() == 'ready' ){
 		        gestorMenu.plugins['BingLayer'].setStatus('visible');
 			}
 		default:
@@ -2045,7 +2045,7 @@ function exportToHTML(filename, rows) {
 
 function getFeatureInfoAsCSV(info) {
     var lines = [];
-    
+
     var lineAux = [];
     lineAux[0] = [];
     lineAux[1] = [];
@@ -2060,13 +2060,13 @@ function getFeatureInfoAsCSV(info) {
     });
     lines.push(lineAux[0].join(','));
     lines.push(lineAux[1].join(','));
-    
+
     exportToCSV('export.csv', lineAux);
 }
 
 function getFeatureInfoAsXLS(info) {
     var lines = [];
-    
+
     var lineAux = [];
     lineAux[0] = [];
     lineAux[1] = [];
@@ -2085,7 +2085,7 @@ function getFeatureInfoAsXLS(info) {
     lineAux[1].push('</tr>');
     lines.push(lineAux[0].join(','));
     lines.push(lineAux[1].join(','));
-    
+
     exportToHTML('export.xls', lineAux);
 }
 
@@ -2137,7 +2137,7 @@ function loadWmsTpl (objLayer) {
 		}
 		overlayMaps[layer].addTo(mapa);
 	}
-    
+
     function ucwords (str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
@@ -2150,9 +2150,9 @@ function loadWmsTpl (objLayer) {
                 var aux = $( this ).text().split(':');
                 info = info.replace('<b>' + aux[0] + '</b>:', '<b>' + ucwords(aux[0].replace(/_/g, ' ')) + ':</b>');
             });
-            
+
             info = info.replace('class="featureInfo"', 'class="featureInfo" id="featureInfoPopup' + idTxt + '"');
-            
+
             return info;
         } else {
             infoAux = info.search("<table"); // search if info has a table
@@ -2161,22 +2161,22 @@ function loadWmsTpl (objLayer) {
                 return '<div class="featureInfo" id="featureInfoPopup' + idTxt + '"><div class="featureGroup"><div style="padding:1em;overflow:scroll-x;overflow-y:hidden" class="individualFeature">' + info + '</div></div></div>';
             }
         }
-        
+
         return '';
     }
-    
+
     //Parse FeatureInfo to display into popup (if info is application/json)
     function parseFeatureInfoJSON(info, idTxt, title) {
         info = JSON.parse(info);
         if (info.features.length > 0) { // check if info has any content, if so shows popup
-            
+
             var infoAux = '<div class="featureInfo" id="featureInfoPopup' + idTxt + '">';
             infoAux += '<div class="featureGroup">';
 			infoAux += '<div style="padding:1em;" class="individualFeature">';
             //infoAux += '<div style="padding:1em;overflow-y:scroll;max-height:200px" class="individualFeature">';
             infoAux += '<h4 style="border-top:1px solid gray;text-decoration:underline;margin:1em 0">' + title + '</h4>';
             infoAux += '<ul id="featureInfoPopupUL' + idTxt + '">';
-                        
+
             for (i in info.features) {
                 Object.keys(info.features[i].properties).forEach(function(k){
                     if (k != 'bbox') { //Do not show bbox property
@@ -2189,17 +2189,17 @@ function loadWmsTpl (objLayer) {
                     }
                 });
             }
-                        
+
             infoAux += '</ul>';
             infoAux += '</div></div></div>';
             //infoAux += '</div></div>Descargar como: <a href="javascript:;" onclick="getFeatureInfoAsCSV(\'featureInfoPopupUL' + idTxt + '\')">csv</a> | <a href="javascript:;" onclick="getFeatureInfoAsXLS(\'featureInfoPopupUL' + idTxt + '\')">xls</a></div>';
-            
+
             return infoAux;
         }
-        
+
         return '';
     }
-    
+
     //function createWmsLayer(wmsUrl, layer) {
     function createWmsLayer(objLayer) {
         //Extends WMS.Source to customize popup behavior
@@ -2276,7 +2276,7 @@ function createTmsLayer(tmsUrl, layer, attribution) {
 }
 
 function createBingLayer(bingKey, layer, attribution) {
-    currentBaseMap = L.tileLayer.bing({ 
+    currentBaseMap = L.tileLayer.bing({
 		bingMapsKey: bingKey,
 		culture: 'es_AR',
 		attribution: attribution
@@ -2316,9 +2316,9 @@ function paginateFeatureInfo(infoArray, actualPage, hasPrev, hasNext) {
     }
     return infoStr;
 }
-    
+
 function changePopupPage(changeType) {
-    
+
     var hasNext = false;
     var hasPrev = false;
     if (changeType == 'next') {
@@ -2330,14 +2330,14 @@ function changePopupPage(changeType) {
             popupInfoPage = popupInfoPage - 1;
         }
     }
-    
+
     if ((popupInfoPage - 1) >= 0) {
         hasPrev = true;
     }
     if (popupInfoToPaginate.length > (popupInfoPage + 1)) {
         hasNext = true;
     }
-    
+
     mapa.openPopup(paginateFeatureInfo(popupInfoToPaginate, popupInfoPage, hasPrev, hasNext), latlngTmp); //Show all info
 }
 
