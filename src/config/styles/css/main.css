@@ -1,0 +1,32 @@
+@media (min-width: 768px){
+.sidebar {
+  top: 100px;
+}
+
+#mapa {
+    height: 94%;
+    top: 23px;
+}
+
+.main {
+    padding: 0px;
+}
+
+.navbar-header > a > img {
+    position: inherit;
+}
+
+#top-left-logo {
+    width: 370px;
+    height: 95px;
+}
+
+.h4, h4 {
+    font-size: 22px !important;
+}
+
+.featureInfo {
+    font-size: 15px !important;
+}
+
+}

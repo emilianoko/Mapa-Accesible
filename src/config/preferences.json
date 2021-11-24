@@ -1,0 +1,72 @@
+{
+  "table": {
+    "isActive": false,
+    "rowsLimit": 5
+  },
+  "charts": {
+    "isActive": false
+  },
+  "metaTags": {
+    "title": "",
+    "description": "",
+    "image": ""
+  },
+  "analytics_ids": [],
+  "excluded_plugins": ["minimap"],
+  "mapConfig": {
+    "center": {
+      "latitude": -40,
+      "longitude": -59
+    },
+    "zoom": {
+      "initial": 4,
+      "min": 3,
+      "max": 21
+    }
+  },
+  "showSearchBar": false,
+  "searchbar":{
+    "isActive": false,
+    "top": "60px",
+    "left": "300px",
+    "color_focus": "#008dc9",
+    "background_color": "rgba(255, 255, 255, 0.7)"
+  },
+  "geocoder":{
+    "url": "",
+    "lang": "es",
+    "limit":10,
+    "Key": ""
+  },
+  "referencias": {
+    "show": false,
+    "src": "src/styles/images/referencias_icono.png",
+    "width":"25px",
+    "height":"31px"
+  },
+  "theme": {
+    "bodyBackground": "#37bbed",
+    "headerBackground": "#37bbed",
+    "menuBackground": "#37bbed",
+    "activeLayer": "#33b560",
+    "textMenu":"white",
+    "textMenuStyle":"text-shadow: #103847 1px 1px 15px",
+    "textLegendMenu":"#dddddd",
+    "textLegendMenuStyle":"text-shadow: #103847 1px 1px 15px",
+    "iconBar":"#4f4f4f"
+    },
+  "logo": {
+    "title":"Mapa Accesible",
+    "src": "src/config/styles/images/legends/logo.svg",
+    "height": "",
+    "width": "",
+    "style": "filter: drop-shadow(1px 1px 1px #103847)",
+    "srcLogoMini": "src/config/styles/images/legends/logo.sv",
+    "miniHeight": "",
+    "miniWidth": "",
+    "ministyle": "filter: drop-shadow(1px 1px 1px #103847);"
+  },
+  "title": "IGN - ARGENMAP",
+  "website": "https://www.unpaz.edu.ar/",
+  "favicon": "https://www.unpaz.edu.ar/sites/default/files/unpaz-favicon.ico"
+}
